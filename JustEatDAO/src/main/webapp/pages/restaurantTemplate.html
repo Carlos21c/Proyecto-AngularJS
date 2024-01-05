@@ -1,0 +1,50 @@
+<div class="simpleContainer">
+		
+		<img data-ng-if="restaurantVM.restaurant.image!=''" src="{{restaurantVM.restaurant.image}}" alt="restaurantImage">
+		<h2>{{restaurantVM.restaurant.name}}</h2>
+		<p>
+			Categories:
+			<span data-ng-repeat="category in restaurantVM.restaurant.categories">{{category.name}} </span>
+		</p>
+		<p>Description: {{restaurantVM.restaurant.description}}</p>
+		<p>Puntuation: {{restaurantVM.restaurant.gradesAverage}}</p>
+		<p>Address: {{restaurantVM.restaurant.address}}, {{restaurantVM.restaurant.city}}</p>
+		<p>Phone: {{restaurantVM.restaurant.telephone}}</p>
+		<p>Email: {{restaurantVM.restaurant.contactEmail}}</p>
+		<p>Price range: {{restaurantVM.restaurant.minPrice}}-{{restaurantVM.restaurant.maxPrice}}</p>
+		<p>
+			Bike friendly:
+			<span data-ng-if="restaurantVM.restaurant.bikeFriendly == 1">Yes</span>
+			<span data-ng-if="restaurantVM.restaurant.bikeFriendly == 0">No</span>
+		</p>
+		<p>
+			Accept orders:
+			<span data-ng-if="restaurantVM.restaurant.available == 1">Yes</span>
+			<span data-ng-if="restaurantVM.restaurant.available == 0">No</span>
+		</p>
+		<div class="editContainer">
+			<a class="linkButton" href="#!restaurant/{{restaurantVM.restaurant.id}}/review">Rate restaurant</a>
+		</div>
+		<div class="editContainer">
+			<a data-ng-if="!restaurantVM.restaurant.fav" class="linkButton" data-ng-click="restaurantVM.functions.addToFavorites(restaurantVM.restaurant.id)">Add to favorites</a>
+			<a data-ng-if="restaurantVM.restaurant.fav" class="linkButton" data-ng-click="restaurantVM.functions.deleteFromFavorites(restaurantVM.restaurant.id)">Delete from favorites</a>
+		</div>
+	</div>
+	<div class="simpleContainer">
+		<h2>Dishes</h2>
+			<div data-ng-repeat="dish in restaurantVM.restaurant.dishes" class="itemContainer">
+				<h3>{{dish.name}}</h3>
+				<img data-ng-if="dish.image!=''" src="{{dish.image}}" alt="dishImage">
+				<p>{{dish.description}}</p>
+				<p>Price: {{dish.price}}</p>
+				<a data-ng-if="restaurantVM.restaurant.available == 1" class="linkButton" data-ng-click="restaurantVM.functions.addToCart(dish.id)">Add</a>
+			</div>
+	</div>
+	<div class="simpleContainer">
+		<h2>Reviews</h2>
+			<div data-ng-repeat="review in restaurantVM.restaurant.reviews" class="itemContainer">
+				<h3>User:{{review.userName}}</h3>
+				<p>Puntuation:{{review.grade}}</p>
+				<p>{{review.review}}</p>
+			</div>
+	</div>

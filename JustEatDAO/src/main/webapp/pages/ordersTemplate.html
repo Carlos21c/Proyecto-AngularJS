@@ -1,0 +1,23 @@
+<div class="simpleContainer">
+		<h2> My orders:</h2>
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-2n6j">Order id</th>
+	                <th class="tg-2n6j hideInfo">Dishes</th>
+	                <th class="tg-2n6j">Price</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-ng-repeat="order in ordersVM.orders"> 
+					<td class="tg-2n6j">{{order.id}}</td>
+					<td class="tg-2n6j hideInfo">
+						<ul>
+						<li data-ng-repeat="dish in order.dishes">{{dish.name}}</li>
+						</ul>
+					</td>
+					<td class="tg-2n6j">{{order.totalPrice}} €</td>
+				</tr>
+	    	</tbody>	
+		</table>
+	</div><!-- simpleContainer -->

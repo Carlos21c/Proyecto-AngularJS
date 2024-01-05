@@ -1,0 +1,22 @@
+<div>
+	<div class="simpleContainer">
+        <h2>Where do you want to order from?</h2>
+        <div class="searchBarContainer">
+        <form method="get" action="">
+            <input class="inputStyle" type="text" id="searchBar" name="searchBar" placeholder="Search for a local, food or city..." data-ng-model="mainPageVM.search">
+            <input class="submitButton" type="submit" value="Search" data-ng-click="mainPageVM.functions.search()">
+        </form>
+        </div><!-- searchBarContainer -->
+    </div><!-- simpleContainer -->
+    <div class="simpleContainer">
+        <h2>What do you plan to eat?</h2>
+        <div class="categoriesContainer">
+	       	<a data-ng-repeat="category in mainPageVM.categories" data-ng-click="mainPageVM.functions.categoryClicked(category.id)">
+	            <div class="categoryContainer">
+	                <h3>{{category.name}}</h3>
+	                	<img data-ng-if="category.image!=''" src="{{category.image}}" alt="categoryImage">
+	            </div><!-- categoryContainer -->
+	        </a>
+        </div>
+    </div><!-- simpleContainer -->
+</div>

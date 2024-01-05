@@ -1,0 +1,8 @@
+<div class="simpleContainer">
+		<h2 data-ng-show="profileVM.functions.where('/logout')">Do you want to logout?</h2>
+		<h2 data-ng-show="profileVM.functions.where('/deleteProfile')">Do you want to delete your profile?</h2>
+        <form data-ng-submit="profileVM.functions.profileSwitcher()">
+			<input class="submitButton" type="submit" value="Yes">
+            <a class="cancelButton" href="#!/">No</a>
+		</form>
+	</div><!-- simpleContainer -->

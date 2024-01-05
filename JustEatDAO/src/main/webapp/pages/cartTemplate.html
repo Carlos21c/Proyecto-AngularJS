@@ -1,0 +1,27 @@
+<div class="simpleContainer">
+		<h2>Order summary:</h2>
+		<form method="POST" action="/p/AddOrderServlet.do">
+			<table class="tg">
+				<thead>
+					<tr>
+						<th class="tg-2n6j">Dish</th>
+		                <th class="tg-2n6j">Price (Unit)</th>
+		                <th class="tg-2n6j"></th>
+					</tr>
+				</thead>
+				<tbody>
+						<tr data-ng-repeat="line in cartVM.cart.lines">
+							<td class="tg-2n6j">{{line.dish.name}} ({{line.amount}})</td>
+							<td class="tg-2n6j">{{line.dish.price}} €</td>
+							<td class="tg-2n6jActions"><a class="linkButton" data-ng-click="cartVM.functions.addToCart(line.dish.id)">+</a>
+							  <a class="linkButton" data-ng-click="cartVM.functions.deleteFromCart(line.dish.id)">-</a></td>
+						</tr>
+			    	<tr>
+			    		<td class="tg-2n6j"></td>
+			    		<td class="tg-2n6j">{{cartVM.cart.price}} €</td>
+			    		<td class="tg-2n6jActions"><a data-ng-if="cartVM.cart.price != 0" class="linkButton" href="#!/confirmOrder">Send order</a></td>
+			    	</tr>
+		    	</tbody>	
+			</table>
+		</form>
+	</div><!-- simpleContainer -->

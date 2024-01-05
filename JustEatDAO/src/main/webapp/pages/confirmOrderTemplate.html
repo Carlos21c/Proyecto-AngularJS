@@ -1,0 +1,12 @@
+<div class="simpleContainer">
+	<h2>Do you want to set this order?</h2>
+	<form data-ng-submit="confirmOrderVM.functions.sendOrder()">
+		<fieldset class="formFieldset">
+		<legend>Dishes:</legend>
+			<p data-ng-repeat="line in confirmOrderVM.cart.lines">{{line.dish.name}}({{line.amount}})</p>
+		</fieldset>
+		<h3>Total price: {{confirmOrderVM.cart.price}}</h3>
+		<input data-ng-if="confirmOrderVM.cart.price != 0" class="submitButton" type="submit" value="Yes">
+           <a class="cancelButton" href="#!/cart">No</a>
+	</form>
+</div>

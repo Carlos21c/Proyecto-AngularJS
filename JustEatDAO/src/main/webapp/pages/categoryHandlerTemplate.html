@@ -1,0 +1,26 @@
+<div class="simpleContainer">
+	<h2 data-ng-show="categoriesHandlerVM.functions.where('/addCategory')">Add category</h2>
+	<h2 data-ng-show="categoriesHandlerVM.functions.where('/editCategory/'+categoriesHandlerVM.category.id)">Edit category</h2>
+	<h2 data-ng-show="categoriesHandlerVM.functions.where('/deleteCategory/'+categoriesHandlerVM.category.id)">Delete category</h2>
+	<form data-ng-submit="categoriesHandlerVM.functions.categoriesHandlerSwitcher()">
+		<input type="hidden" name="idc" data-ng-model="categoriesHandlerVM.category.id">
+		<label class="inputLabel" for="categoryName">Name:</label>
+		<input class="inputStyle" type="text" id="categoryName"
+			name="categoryName" placeholder="Category name..." data-ng-model="categoriesHandlerVM.category.name" 
+			data-ng-readonly="categoriesHandlerVM.functions.where('/deleteCategory/'+categoriesHandlerVM.category.id)" required>
+		<label class="inputLabel" for="categoryDescription">Description:</label>
+		<input class="inputStyle" type="text" id="categoryDescription"
+			name="categoryDescription" placeholder="Category description..." data-ng-model="categoriesHandlerVM.category.description"
+			data-ng-readonly="categoriesHandlerVM.functions.where('/deleteCategory/'+categoriesHandlerVM.category.id)"  required>
+		<label class="inputLabel" for="categoryImage">Image:</label>
+		<input class="inputStyle" type="text" id="categoryImage"
+			name="categoryImage" placeholder="Category image url..." data-ng-model="categoriesHandlerVM.category.image"
+			data-ng-readonly="categoriesHandlerVM.functions.where('/deleteCategory/'+categoriesHandlerVM.category.id)" >
+		<input data-ng-show="categoriesHandlerVM.functions.where('/addCategory')"
+			class="submitButton" type="submit" value="Add">
+		<input data-ng-show="categoriesHandlerVM.functions.where('/editCategory/'+categoriesHandlerVM.category.id)"
+			class="submitButton" type="submit" value="Edit">
+		<input data-ng-show="categoriesHandlerVM.functions.where('/deleteCategory/'+categoriesHandlerVM.category.id)"
+			class="submitButton" type="submit" value="Delete">
+	</form>
+</div><!-- simpleContainer -->

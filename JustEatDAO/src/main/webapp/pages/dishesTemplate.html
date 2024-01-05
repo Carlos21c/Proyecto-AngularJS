@@ -1,0 +1,25 @@
+<div class="simpleContainer">
+		<h2> Edit menu</h2>
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-2n6j">Name</th>
+	                <th class="tg-2n6j hideInfo">Description</th>
+	                <th class="tg-2n6j hideInfo">Price</th>
+	                <th class="tg-2n6j">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+					<tr data-ng-repeat="dish in dishesVM.dishes"> 
+						<td class="tg-2n6j">{{dish.name}}</td>
+						<td class="tg-2n6j hideInfo">{{dish.description}}</td>
+						<td class="tg-2n6j hideInfo">{{dish.price}}</td>
+						<td class="tg-2n6jActions"><a class="linkButton" href="#!/editMenu/{{dish.idr}}/editDish/{{dish.id}}">Edit</a>
+						  <a class="linkButton" href="#!/editMenu/{{dish.idr}}/deleteDish/{{dish.id}}">Delete</a></td>
+					</tr>
+	    	</tbody>	
+		</table>	
+		<div class="editContainer">
+    		<a class="linkButton" href="#!/editMenu/{{dishesVM.idr}}/addDish">Add New</a>
+    	</div>
+	</div><!-- simpleContainer -->

@@ -1,0 +1,106 @@
+<div class="simpleContainer">
+		<h2 data-ng-show="restaurantsHandlerVM.functions.where('/addRestaurant')">Add restaurant</h2>
+		<h2 data-ng-show="restaurantsHandlerVM.functions.where('/editRestaurant/'+restaurantsHandlerVM.restaurant.id)">Edit restaurant</h2>
+		<h2 data-ng-show="restaurantsHandlerVM.functions.where('/deleteRestaurant/'+restaurantsHandlerVM.restaurant.id)">Delete restaurant</h2>
+		<form data-ng-submit="restaurantsHandlerVM.functions.restaurantsHandlerSwitcher()">
+		<input type="hidden" name="idr" data-ng-model="restaurantsHandlerVM.restaurant.id">
+			<label class="inputLabel" for="restaurantName">Name:</label>
+			<input class="inputStyle" type="text" id="restaurantName"
+				name="restaurantName" placeholder="Restaurant name..." data-ng-model="restaurantsHandlerVM.restaurant.name" 
+				data-ng-readonly="restaurantsHandlerVM.functions.where('/deleteRestaurant/'+restaurantsHandlerVM.restaurant.id)"
+				required>
+			<label class="inputLabel" for="restaurantDescription">Description:</label>
+			<textarea class="inputStyle" name="restaurantDescription" placeholder="Restaurant description..." 
+			data-ng-model="restaurantsHandlerVM.restaurant.description"
+			data-ng-readonly="restaurantsHandlerVM.functions.where('/deleteRestaurant/'+restaurantsHandlerVM.restaurant.id)" required></textarea>
+			<label class="inputLabel" for="restaurantImage">Image:</label>
+			<input class="inputStyle" type="text" id="restaurantImage"
+				name="restaurantImage" placeholder="Restaurant image url..." 
+				data-ng-model="restaurantsHandlerVM.restaurant.image"
+				data-ng-readonly="restaurantsHandlerVM.functions.where('/deleteRestaurant/'+restaurantsHandlerVM.restaurant.id)">
+			<label class="inputLabel" for="restaurantAddress">Address:</label>
+			<textarea class="inputStyle" name="restaurantAddress" placeholder="Restaurant address..." 
+			data-ng-model="restaurantsHandlerVM.restaurant.address"
+			data-ng-readonly="restaurantsHandlerVM.functions.where('/deleteRestaurant/'+restaurantsHandlerVM.restaurant.id)" required></textarea>
+			<label class="inputLabel" for="restaurantCity">City:</label>
+			<input class="inputStyle" type="text" id="restaurantCity"
+				name="restaurantCity" placeholder="Restaurant city..." 
+				data-ng-model="restaurantsHandlerVM.restaurant.city"
+				data-ng-readonly="restaurantsHandlerVM.functions.where('/deleteRestaurant/'+restaurantsHandlerVM.restaurant.id)" required>
+			<label class="inputLabel" for="restaurantTelephone">Telephone number:</label>
+			<input class="inputStyle" type="tel" id="restaurantTelephone"
+				name="restaurantTelephone" placeholder="Restaurant telephone..." 
+				data-ng-model="restaurantsHandlerVM.restaurant.telephone"
+				data-ng-readonly="restaurantsHandlerVM.functions.where('/deleteRestaurant/'+restaurantsHandlerVM.restaurant.id)" required>
+			<label class="inputLabel" for="restaurantEmail">Email:</label>
+			<input class="inputStyle" type="email" id="restaurantEmail"
+				name="restaurantEmail" placeholder="Restaurant email..." 
+				data-ng-model="restaurantsHandlerVM.restaurant.contactEmail" 
+				data-ng-readonly="restaurantsHandlerVM.functions.where('/deleteRestaurant/'+restaurantsHandlerVM.restaurant.id)" required> 
+			<label class="inputLabel" for="minPrice">Minimum price:</label>
+			<input class="inputStyle" type="number" step="0.01" id="minPrice"
+				name="minPrice" placeholder="Min price..." 
+				data-ng-model="restaurantsHandlerVM.restaurant.minPrice" 
+				data-ng-readonly="restaurantsHandlerVM.functions.where('/deleteRestaurant/'+restaurantsHandlerVM.restaurant.id)" required>
+			<label class="inputLabel" for="maxPrice">Maximum price:</label>
+			<input class="inputStyle" type="number" step="0.01" id="maxPrice"
+				name="maxPrice" placeholder="Max price..." 
+				data-ng-model="restaurantsHandlerVM.restaurant.maxPrice"
+				data-ng-readonly="restaurantsHandlerVM.functions.where('/deleteRestaurant/'+restaurantsHandlerVM.restaurant.id)" required>
+			<label class="inputLabel" for="deliveryTime">Delivery time:</label>
+			<input class="inputStyle" type="number" id="deliveryTime"
+				name="deliveryTime" placeholder="Delivery time (mins)..." 
+				data-ng-model="restaurantsHandlerVM.restaurant.deliveryTime"
+				data-ng-readonly="restaurantsHandlerVM.functions.where('/deleteRestaurant/'+restaurantsHandlerVM.restaurant.id)" required>
+			<label class="inputLabel" for="deliveryPrice">Delivery price:</label>
+			<input class="inputStyle" type="number" step="0.01" id="deliveryPrice"
+				name="deliveryPrice" placeholder="Delivery price (€)..." 
+				data-ng-model="restaurantsHandlerVM.restaurant.deliveryPrice"
+				data-ng-readonly="restaurantsHandlerVM.functions.where('/deleteRestaurant/'+restaurantsHandlerVM.restaurant.id)" required>
+			<fieldset class="formFieldset" data-ng-required="true" data-ng-disabled="restaurantsHandlerVM.functions.where('/deleteRestaurant/'+restaurantsHandlerVM.restaurant.id)">
+				<legend>Categories:</legend>
+	 				<div  data-ng-repeat="category in restaurantsHandlerVM.categories">
+	 					<input type="checkbox" id="{{category.name}}Box" name="categoryBox" data-ng-checked="category.checked" 
+	 					data-ng-model="category.checked">
+	 					<label class="radioLabel" for="{{category.name}}Box">{{category.name}}</label>
+	 				</div>
+	 		</fieldset>
+	 		<p class="inputError" data-ng-if="restaurantsHandlerVM.emptyCategories == true">You must select at least one category</p>
+			<fieldset class="formFieldset" data-ng-disabled="restaurantsHandlerVM.functions.where('/deleteRestaurant/'+restaurantsHandlerVM.restaurant.id)">
+				<legend>Available:</legend>
+				<div>
+					<input id="availableYes" type="radio" name="available" value="1" 
+					data-ng-checked="restaurantsHandlerVM.restaurant.available==1" 
+					data-ng-model="restaurantsHandlerVM.restaurant.available" required />
+					<label class="radioLabel" for="availableYes">Yes</label>
+				</div>
+				<div>
+					<input id="availableNo" type="radio" name="available" value="0" 
+					data-ng-checked="restaurantsHandlerVM.restaurant.available==0"
+					data-ng-model="restaurantsHandlerVM.restaurant.available" required />
+					<label class="radioLabel" for="availableNo">No</label>
+				</div>
+			</fieldset>
+			<fieldset class="formFieldset" data-ng-disabled="restaurantsHandlerVM.functions.where('/deleteRestaurant/'+restaurantsHandlerVM.restaurant.id)">
+				<legend>BikeFriendly:</legend>
+				<div>
+					<input class="radioInput" type="radio" name="bykeFriendly" id="bykeFriendlyYes" value="1" 
+					data-ng-checked="restaurantsHandlerVM.restaurant.bikeFriendly==1" 
+					data-ng-model="restaurantsHandlerVM.restaurant.bikeFriendly" required>
+					<label class="radioLabel" for="bykeFriendlyYes">Yes</label>
+				</div>
+				<div>
+					<input class="radioInput" type="radio" name="bykeFriendly" id="bykeFriendlyNo" value="0" 
+					data-ng-checked="restaurantsHandlerVM.restaurant.bikeFriendly==0" 
+					data-ng-model="restaurantsHandlerVM.restaurant.bikeFriendly" required>
+					<label class="radioLabel" for="bykeFriendlyNo">No</label>
+				</div>
+			</fieldset>
+			<input data-ng-show="restaurantsHandlerVM.functions.where('/addRestaurant')"
+				class="submitButton" type="submit" value="Add">
+			<input data-ng-show="restaurantsHandlerVM.functions.where('/editRestaurant/'+restaurantsHandlerVM.restaurant.id)"
+				class="submitButton" type="submit" value="Edit">
+			<input data-ng-show="restaurantsHandlerVM.functions.where('/deleteRestaurant/'+restaurantsHandlerVM.restaurant.id)"
+				class="submitButton" type="submit" value="Delete">
+		</form>
+	</div><!-- simpleContainer -->

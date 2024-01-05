@@ -1,0 +1,12 @@
+<div>
+	<div class="simpleContainer">
+    	<img data-ng-if="profileVM.user.image!=''" src="{{profileVM.user.image}}" alt="profileImage" >
+		<h2>Welcome, {{profileVM.user.name}}</h2>
+        <p>Complete name: {{profileVM.user.name}} {{profileVM.user.surname}} </p>
+		<p>Email: {{profileVM.user.email}}</p>
+        <div class="editContainer">
+            <a class="simpleButton" href="#!/editProfile">Edit Profile</a>
+            <a class="simpleButton" href="#!/deleteProfile">Delete Profile</a>
+   		</div>
+   	</div>
+</div>

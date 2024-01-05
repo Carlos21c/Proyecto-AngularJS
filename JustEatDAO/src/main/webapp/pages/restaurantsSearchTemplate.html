@@ -1,0 +1,57 @@
+<div class="searchHeaderContainer">
+	<form>
+		<div class="searchBarContainer">
+			<input class="searchBar" type="text" id="searchBar" name="searchBar"
+				placeholder="Search for a local, food or city..." data-ng-model="restaurantsSearchVM.searchBar">
+		</div>
+		<!-- searchBarContainer -->
+		<p>
+			<label for="selectCategory">Category</label>
+			<select name="selectCategory" id="selectCategory" data-ng-model="restaurantsSearchVM.selectedCategory">
+				<option value="">All</option>
+				<option data-ng-repeat="category in restaurantsSearchVM.categories" value="{{category.id}}">{{category.name}}</option>
+			</select>
+		</p>
+		<p>
+            <label for="selectOrder">Order</label>
+            <select name="selectOrder" id="selectOrder" data-ng-model="restaurantsSearchVM.selectedOrder">
+                <option value="name">Name</option>
+                <option value="-gradesAverage">Puntuation</option>
+            </select>
+        </p>
+        <p>
+            <label for="selectAvailable">Accept orders</label>
+            <select name="selectAvailable" id="selectAvailable" data-ng-model="restaurantsSearchVM.selectedAvailable">
+                <option value="">All</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </p>
+	</form>
+</div>
+<div class="centerRestaurantsResultContainer">
+	<div class="restaurantsContainer">
+		<h2>Search results:</h2>
+				<div data-ng-repeat="restaurant in restaurantsSearchVM.restaurants | filter:{available:restaurantsSearchVM.selectedAvailable} | filter:restaurantsSearchVM.searchBar | filter:{categories:{id:restaurantsSearchVM.selectedCategory}} | orderBy:restaurantsSearchVM.selectedOrder" class="restaurantContainer">
+					<a href="#!/restaurant/{{restaurant.id}}">
+						<img data-ng-if="restaurant.image!=''" src="{{restaurant.image}}" alt="restaurantImage">
+						<h3>{{restaurant.name}}</h3>
+						<p>
+							Categories: <span data-ng-repeat="category in restaurant.categories">{{category.name}} </span>
+						</p>
+						<div>
+							<p class="restaurantListPuntuation">Puntuation: {{restaurant.gradesAverage}}</p>
+							<p class="restaurantListPuntuation">Address: {{restaurant.address}}</p>
+							<p class="restaurantListPuntuation">City: {{restaurant.city}}</p>
+						</div>
+						<div>
+							<p class="AcceptOrders">Accept orders: <span data-ng-if="restaurant.available==1">Yes</span>
+        					<span data-ng-if="restaurant.available==0">No</span>
+	       					</p>
+	       					<p class="restaurantListDeliveryTime">Delivery Time: {{restaurant.deliveryTime}}</p>
+	       					<p class="restaurantListDeliveryPrice">Delivery Price: {{restaurant.deliveryPrice}}</p>
+						</div>
+					</a>
+				</div>
+	</div><!-- simpleContainer -->
+</div><!-- centerRestaurantsResultContainer -->

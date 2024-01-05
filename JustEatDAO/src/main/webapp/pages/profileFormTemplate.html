@@ -1,0 +1,11 @@
+<div class="simpleContainer">
+	<h2>Edit profile</h2>
+	<form data-ng-submit="profileVM.functions.editUser()">
+        <input class="inputStyle" type="text" id="name" name="name" placeholder="Introduce your name..." data-ng-model="profileVM.user.name" required>
+        <input class="inputStyle" type="text" id="image" name="image" placeholder="Introduce an image url..." data-ng-model="profileVM.user.image">
+        <input class="inputStyle" type="text" id="surname" name="surname" placeholder="Introduce your surname..." data-ng-model="profileVM.user.surname" required>
+		<input class="inputStyle" type="email" id="email" name="email" placeholder="Introduce your email..." data-ng-model="profileVM.user.email" required>
+		<input class="inputStyle" type="password" id="password" name="password" placeholder="Introduce your password..." data-ng-model="profileVM.user.password" required>
+		<input class="submitButton" type="submit" value="Confirm changes">
+	</form>
+</div><!-- simpleContainer -->
